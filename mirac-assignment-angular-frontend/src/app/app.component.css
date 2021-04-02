@@ -1,0 +1,18 @@
+
+
+.nav-a {
+  color: #FFFFFF;
+  font-size: 16px;
+  margin-left: 10px;
+  text-decoration: underline;
+}
+
+.nav-a:hover {
+  text-decoration: none;
+}
+
+
+.mainArea {
+  width: 90%;
+  margin: 0 auto;
+}

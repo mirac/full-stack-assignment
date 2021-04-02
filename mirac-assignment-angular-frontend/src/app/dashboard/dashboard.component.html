@@ -1,0 +1,81 @@
+
+<div class="grid-container">
+  <h1>Dashboard</h1>
+
+  <div class="card-list">
+    <mat-card class="tp-card">
+      <mat-card-header>
+         <mat-card-title>
+           Dataset
+           <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+            <mat-icon>more_vert</mat-icon>
+          </button>
+          <mat-menu #menu="matMenu" xPosition="before">
+            <button mat-menu-item>Expand</button>
+            <button mat-menu-item>Remove</button>
+          </mat-menu>
+         </mat-card-title>
+         <mat-card-subtitle>
+           Send our data to websocket for realtime simulation
+         </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <button (click)="sendRecords()" mat-raised-button color="primary">Send Data to Websocket API</button>
+      </mat-card-content>
+   </mat-card>
+   <br>
+   <mat-card class="tp-card">
+    <mat-card-header>
+       <mat-card-title>
+         Tracking
+         <button mat-icon-button class="more-button" [matMenuTriggerFor]="menu" aria-label="Toggle menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu" xPosition="before">
+          <button mat-menu-item>Expand</button>
+          <button mat-menu-item>Remove</button>
+        </mat-menu>
+       </mat-card-title>
+       <mat-card-subtitle>
+         Tracking records of vehicles
+       </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <app-map></app-map>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  <div class="clear"></div>
+
+  <h2>GPS Data</h2>
+  <table class="table table-striped">
+    <thead>
+        <tr>
+          <th>Device ID</th>
+          <th>Location</th>
+          <th>Speed</th>
+          <th>Timestamp</th>
+          <th>T0</th>
+        </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let record of records">
+        <td>{{ record.deviceID }}</td>
+        <td>
+          Type: {{ record.location.type }}
+          Coords: x: {{ record.location.coordinates[0] }}, y: {{ record.location.coordinates[1] }}
+        </td>
+        <td>
+          {{ record.speed }}
+        </td>
+        <td>
+          {{ record.timestamp }}
+        </td>
+        <td>
+          {{ record.t0 }}
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
